@@ -41,6 +41,122 @@
         -1px 1px 0 theme('colors.primary'),
         1px 1px 0 theme('colors.primary');
     }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .transform-style-preserve-3d {
+      transform-style: preserve-3d;
+    }
+
+    /* --- Advanced Flip Card Styles --- */
+    .flip-card {
+      background-color: transparent;
+      width: 320px;
+      height: 350px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border-radius: 15px;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .flip-card-front {
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .flip-card-front::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+      border-radius: 15px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 20px;
+      z-index: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .card-links {
+      padding: 20px;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .card-links a {
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s;
+      border: 1px solid #fff;
+    }
+
+    .card-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .flip-card-back {
+      background-color: #1a1a1a;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
   </style>
 </head>
 <body class="bg-slate-900 font-display text-gray-200" style="background-image: url('darkened_wallpaper.jpg'); background-size: cover; background-attachment: fixed; background-position: center;">
@@ -50,7 +166,7 @@
 <header class="mb-8">
 <h1 class="text-6xl md:text-8xl font-bold text-white text-3d mb-4">SABEEH ABID</h1>
 <div class="flex flex-col md:flex-row md:justify-center md:items-center space-y-2 md:space-y-0 md:space-x-6 text-gray-500 dark:text-gray-400">
-<p>House No #K-65, Lane-71, ECHS Society, D-18, Islamabad 46000</p>
+<p>Pakistan, Islamabad</p>
 <span class="hidden md:inline">|</span>
 <p>+92 327 2415997</p>
 <span class="hidden md:inline">|</span>
@@ -154,44 +270,161 @@
                 Explore a selection of my recent projects, showcasing my skills in AI and full-stack development.
               </p>
 </div>
-<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-<div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/70"></div>
-<img alt="FitDiet AI" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="204128790-healthy-diet-exercise-motivational-poster-fitness-good-eating-habits-illustration-generative-ai-removebg-preview.png"/>
-<div class="absolute inset-0 flex flex-col justify-end p-6">
-<h3 class="text-xl font-bold text-white">FitDiet AI</h3>
-<p class="mt-2 text-sm text-gray-300">
-                    Personalized Health Platform with AI-powered diet planning using machine learning algorithms. Full-stack Django application.
-                  </p>
-<div class="mt-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-<a class="inline-block rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/80 mr-2" href="https://shahwaizvlogs.pythonanywhere.com/">Live Demo</a>
-<a class="inline-block rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/80" href="https://www.instagram.com/p/DPD6jYciPl6/">Showcase</a>
+<div class="grid grid-cols-1 gap-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 justify-center">
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('204128790-healthy-diet-exercise-motivational-poster-fitness-good-eating-habits-illustration-generative-ai-removebg-preview.png');">
+<div class="card-title">FitDiet AI</div>
+<div class="card-links">
+<a href="https://shahwaizvlogs.pythonanywhere.com/" target="_blank">Live Demo</a>
+<a href="https://www.instagram.com/p/DPD6jYciPl6/" target="_blank">Showcase</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">FitDiet AI</div>
+<p class="card-description">
+Personalized Health Platform with AI-powered diet planning using machine learning algorithms. Full-stack Django application.
+</p>
+<div class="card-links">
+<a href="https://shahwaizvlogs.pythonanywhere.com/" target="_blank">Live Demo</a>
+<a href="https://www.instagram.com/p/DPD6jYciPl6/" target="_blank">Showcase</a>
 </div>
 </div>
 </div>
-<div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/70"></div>
-<img alt="AI Job Candidate Screening System" class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" src="WhatsApp Image 2025-09-28 at 19.33.57_da427af7.jpg"/>
-<div class="absolute inset-0 flex flex-col justify-end p-6">
-<h3 class="text-xl font-bold text-white">AI Job Candidate Screening</h3>
-<p class="mt-2 text-sm text-gray-300">
-                    Intelligent screening system using ML models (Logistic Regression, KNN, Decision Tree) with real-time analytics dashboard.
-                  </p>
-<div class="mt-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-<a class="inline-block rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/80" href="https://www.instagram.com/p/DPD7OrvCF9E/">Demo</a>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('1679623482976.jpg');">
+<div class="card-title">AI Job Candidate Screening</div>
+<div class="card-links">
+<a href="https://www.instagram.com/p/DPD7OrvCF9E/" target="_blank">Demo</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">AI Job Candidate Screening</div>
+<p class="card-description">
+Intelligent screening system using ML models (Logistic Regression, KNN, Decision Tree) with real-time analytics dashboard.
+</p>
+<div class="card-links">
+<a href="https://www.instagram.com/p/DPD7OrvCF9E/" target="_blank">Demo</a>
 </div>
 </div>
 </div>
-<div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/70"></div>
-<img alt="Complaint Manager" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="WhatsApp Image 2025-09-28 at 19.31.19_8d65130e.jpg"/>
-<div class="absolute inset-0 flex flex-col justify-end p-6">
-<h3 class="text-xl font-bold text-white">Complaint Manager</h3>
-<p class="mt-2 text-sm text-gray-300">
-                    Full-stack Django app for society system with dual authentication, advanced search, and real-time status management.
-                  </p>
-<div class="mt-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-<a class="inline-block rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/80" href="https://github.com/Dexturre/Complaint-Manager-">GitHub</a>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('WhatsApp Image 2025-09-28 at 19.31.19_8d65130e.jpg');">
+<div class="card-title">Complaint Manager</div>
+<div class="card-links">
+<a href="https://github.com/Dexturre/Complaint-Manager-" target="_blank">GitHub</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">Complaint Manager</div>
+<p class="card-description">
+Full-stack Django app for society system with dual authentication, advanced search, and real-time status management.
+</p>
+<div class="card-links">
+<a href="https://github.com/Dexturre/Complaint-Manager-" target="_blank">GitHub</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('AI-music-production-q11vh2he8pkft18gndky37ygp6sxh2xusgfu7h3yve.webp');">
+<div class="card-title">MusicAI — Data Module</div>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Task/tree/main/task%203/MusicAI/data" target="_blank">GitHub</a>
+<a href="https://www.instagram.com/p/DNL-rmAIDeL/" target="_blank">Demo</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">MusicAI — Data Module</div>
+<p class="card-description">
+Data preparation module for MusicAI project, handling audio datasets, preprocessing, and feature extraction for AI music systems. Part of CodeAlpha Internship Task 3.
+</p>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Task/tree/main/task%203/MusicAI/data" target="_blank">GitHub</a>
+<a href="https://www.instagram.com/p/DNL-rmAIDeL/" target="_blank">Demo</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('ePly-1-980x720.webp');">
+<div class="card-title">Event Registration System (Backend)</div>
+<div class="card-links">
+<a href="https://github.com/Dexturre/CodeAlpha-Backend-Development-Tasks/tree/main/task%202/EventRegistrationSys" target="_blank">GitHub</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">Event Registration System (Backend)</div>
+<p class="card-description">
+Backend service for managing events and user registrations, featuring CRUD operations, API endpoints, and data persistence. Part of CodeAlpha Backend Development series.
+</p>
+<div class="card-links">
+<a href="https://github.com/Dexturre/CodeAlpha-Backend-Development-Tasks/tree/main/task%202/EventRegistrationSys" target="_blank">GitHub</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('6421a34487be89319523d2e5_unnamed - 2023-03-27T220755.504.jpg');">
+<div class="card-title">Data Analytics</div>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Data-Analytics-Task" target="_blank">GitHub</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">Data Analytics</div>
+<p class="card-description">
+CodeAlpha Data Analytics project featuring Data Visualization and Sentiment Analysis tasks.
+</p>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Data-Analytics-Task" target="_blank">GitHub</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('po_overview_img02.webp');">
+<div class="card-title">AI Photo Manager</div>
+<div class="card-links">
+<a href="https://www.instagram.com/p/DNL9yK3IAVP/" target="_blank">Demo Video</a>
+<a href="https://www.fiverr.com/users/dexturre/portfolio/Njg4ZDExMWQ4MThiYWYwMDAxY2I4ZWQ2" target="_blank">Full Details</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">AI Photo Manager</div>
+<p class="card-description">
+Desktop application built with Python's Tkinter library, designed to simplify how users manage, organize, and enhance their photo collections. The application follows a wizard-style workflow, guiding users through each step — from selecting their images to viewing enhanced results — in an intuitive and visually clean interface.
+</p>
+<div class="card-links">
+<a href="https://www.instagram.com/p/DNL9yK3IAVP/" target="_blank">Demo Video</a>
+<a href="https://www.fiverr.com/users/dexturre/portfolio/Njg4ZDExMWQ4MThiYWYwMDAxY2I4ZWQ2" target="_blank">Full Details</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-image: url('rf-emotion-recognition-rf-830x495-1.jpeg'); background-size: 180%; background-position: 70% 0%;">
+<div class="card-title">Emotion Recognition</div>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Machine-Learning-Tasks/tree/main/task%202/EmotionRecognition" target="_blank">GitHub</a>
+</div>
+</div>
+<div class="flip-card-back">
+<div class="card-title">Emotion Recognition</div>
+<p class="card-description">
+Machine learning system for detecting and classifying human emotions from input data such as facial expressions, speech, or text. Part of CodeAlpha Machine Learning tasks, featuring data preprocessing, model training, evaluation, and inference interface.
+</p>
+<div class="card-links">
+<a href="https://github.com/Dexturre/-CodeAlpha_Machine-Learning-Tasks/tree/main/task%202/EmotionRecognition" target="_blank">GitHub</a>
 </div>
 </div>
 </div>

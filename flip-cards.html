@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work - Project Cards</title>
+    <style>
+        /* --- Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        /* --- General Styles --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        /* --- Project Section --- */
+        .project-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .project-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* --- Cards Grid --- */
+        .project-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        /* --- Flip Card --- */
+        .flip-card {
+            background-color: transparent;
+            width: 320px;
+            height: 450px;
+            perspective: 1000px; /* For 3D effect */
+        }
+
+        /* This container is needed to position the front and back side */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-radius: 15px;
+        }
+
+        /* Flip on hover */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        /* Add a slight scale effect on hover for better interaction */
+        .flip-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+        /* Position the front and back sides */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden; /* Ensures content stays within rounded corners */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- Front Side Styling --- */
+        .flip-card-front {
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        /* Add a dark overlay for better text readability */
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+            border-radius: 15px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 20px;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .card-links {
+            padding: 20px;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .card-links a {
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 1px solid #fff;
+        }
+
+        .card-links a:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* --- Back Side Styling --- */
+        .flip-card-back {
+            background-color: #1a1a1a;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in height/width */
+        }
+        
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: left;
+            flex-grow: 1; /* Allows description to take up available space */
+            overflow-y: auto; /* For longer descriptions */
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="project-section">
+        <h1>My Work</h1>
+        <div class="project-cards-container">
+
+            <!-- Card 1 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background-image: url('AI-music-production-q11vh2he8pkft18gndky37ygp6sxh2xusgfu7h3yve.webp');">
+                        <div class="card-title">AI Music Production</div>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-title">AI Music Production</div>
+                        <p class="card-description">
+                            A generative AI platform that assists musicians in creating unique melodies and harmonies. Built with Python, TensorFlow, and a Flask-based REST API.
+                        </p>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background-image: url('rf-emotion-recognition-rf-830x495-1.jpeg');">
+                        <div class="card-title">Emotion Recognition</div>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Demo</a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-title">Emotion Recognition</div>
+                        <p class="card-description">
+                            A real-time emotion detection system using computer vision. This application leverages OpenCV and a custom-trained CNN model to analyze facial expressions from a live video feed.
+                        </p>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background-image: url('po_overview_img02.webp');">
+                        <div class="card-title">Health & Diet Platform</div>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-title">Health & Diet Platform</div>
+                        <p class="card-description">
+                            Personalized Health Platform with AI-powered diet planning using machine learning algorithms. This is a full-stack Django application with a PostgreSQL database.
+                        </p>
+                        <div class="card-links">
+                            <a href="#" target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 
+        No JavaScript is needed for the flip animation.
+        The 3D flip effect is achieved purely with CSS using perspective, transform, and transition properties for better performance and simplicity.
+    -->
+
+</body>
+</html>
